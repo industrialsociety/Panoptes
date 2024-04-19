@@ -9,10 +9,10 @@ def export_urls_to_txt(db_path, txt_file_path):
     cursor.execute('SELECT url FROM urls')
     urls = cursor.fetchall()  # Fetch all results
     
-    # Write URLs to a text file
-    with open(txt_file_path, 'w') as file:
-        for url in urls:
-            file.write(url[0] + '\n')  # url[0] because fetchall returns a list of tuples
+# Write URLs to a text file with UTF-8 encoding
+with open(txt_file_path, 'w', encoding='utf-8') as file:
+    for url in urls:
+        file.write(url[0] + '\n')  # url[0] because fetchall returns a list of tuples
     
     # Close the database connection
     conn.close()
